@@ -1,40 +1,63 @@
 package ru.hogwarts.school.model;
 
-import java.util.Objects;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+import java.util.Objects;
+@Entity
 public class Student {
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name;
     private int age;
 
-    public Student(long id, String name, int age) {
+    public Student(Long id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;
     }
 
-    public long getId() {
+    public Student() {
+    }
+
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
+    public int getAge() {
+        return age;
+    }
+
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return age == student.age && Objects.equals(id, student.id) && Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, age);
     }
 
     @Override
@@ -44,17 +67,5 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Student student)) return false;
-        return getId() == student.getId() && getAge() == student.getAge() && Objects.equals(getName(), student.getName());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getName(), getAge());
     }
 }
