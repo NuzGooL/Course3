@@ -1,7 +1,7 @@
-select * from student
+SELECT * FROM student
 
-select * from  student where age between 10 and 20;
-select name from student;
-select * from student where  name  like '%o%' or name  like '%O%'
-select * from student where age < id;
-select * from student order by age;
+SELECT * FROM  student WHERE AGE BETWEEN 10 AND 20;
+SELECT NAME FROM student;
+SELECT * FROM student WHERE  NAME  LIKE '%o%' OR NAME  LIKE '%O%'
+SELECT * FROM student WHERE AGE < id;
+SELECT * FROM student ORDER BY AGE;
