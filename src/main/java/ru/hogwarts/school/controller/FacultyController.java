@@ -49,7 +49,7 @@ public class FacultyController {
 
     @GetMapping("/colorFilter/{color}")
     public Collection<Faculty> colorFilteredFaculties(@PathVariable String color) {
-        return facultyService.filterColor(color);
+        return facultyService.findByColorList(color);
     }
 
     @GetMapping("/findByColorOrName")

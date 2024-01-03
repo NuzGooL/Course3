@@ -8,6 +8,7 @@ import ru.hogwarts.school.repository.FacultyRepository;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,12 +45,17 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public Faculty findByName(String name) {
-        return facultyRepository.findFacultyByNameIgnoreCase(name);
+        return facultyRepository.findFirstFacultyByNameIgnoreCase(name);
     }
 
     @Override
     public Faculty findByColor(String color) {
-        return facultyRepository.findFacultyByColorIgnoreCase(color);
+        return facultyRepository.findFirstFacultyByColorIgnoreCase(color);
+    }
+
+    @Override
+    public List<Faculty> findByColorList(String color) {
+        return facultyRepository.findByColorIgnoreCase(color);
     }
 
     @Override
